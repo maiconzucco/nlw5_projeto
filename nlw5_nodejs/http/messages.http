@@ -1,0 +1,24 @@
+### Cria mensagem sem admin_id
+POST {{baseUrl}}{{messagesPath}}
+Content-Type: application/json
+
+{
+  "text": "Olá eu preciso de ajuda. (sem admin_id)",
+  "user_id": "e61d96f6-316d-448a-93ff-65a79955c0e0"
+}
+
+### Cria mensagem com admin_id
+POST {{baseUrl}}{{messagesPath}}
+Content-Type: application/json
+
+{
+  "admin_id": "caa12090-ab6d-11eb-bcbc-0242ac130002",
+  "text": "Olá, tudo bem? O que está acontecendo? (com admin_id)",
+  "user_id": "e61d96f6-316d-448a-93ff-65a79955c0e0"
+}
+
+### Busca mensagens de um user_id
+GET {{baseUrl}}{{messagesPath}}/e61d96f6-316d-448a-93ff-65a79955c0e0
+Accept: application/json
+
+###
