@@ -1,0 +1,9 @@
+POST {{baseUrl}}{{settingsPath}}
+Content-Type: application/json
+
+{
+  "chat": "true",
+  "username": "admin1"
+}
+
+###
