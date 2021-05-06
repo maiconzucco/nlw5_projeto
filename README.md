@@ -1,6 +1,18 @@
 # nlw5_projeto
 Projeto da Next Level Week #05. 
 
+## Sites úteis
+1. Confecção de diagramas: https://whimsical.com
+
+
+## Métodos HTTO
+1. GET: Buscas 
+1. POST: Criação
+1. PUT: Alteração 
+1. DELETE: Deletar 
+1. PATCH: Alterar uma informação específica
+
+
 ## Configuração do projeto
 ```console
 yarn add express
@@ -71,3 +83,17 @@ yarn add @types/uuid -D
     ```json
     { "chave": "valor" }
     ```
+
+## WebSockets
+1. Socket.io:
+   1. https://socket.io
+   1. https://www.npmjs.com/package/socket.io
+  
+### Instalação de pacote
+```console
+yarn add socket.io
+yarn add @types/socket.io -D   
+yarn add ejs
+yarn add socket.io-client
+```
+
