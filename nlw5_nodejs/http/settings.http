@@ -16,7 +16,7 @@ PUT {{baseUrl}}{{settingsPath}}/admin
 Content-Type: application/json
 
 {
-  "chat": "true"
+  "chat": true
 }
 
 ###

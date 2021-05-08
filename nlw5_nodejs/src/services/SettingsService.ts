@@ -39,6 +39,7 @@ class SettingsService {
       .where("username = :username", {
         username
       }).execute();
+
   }
 }
 
