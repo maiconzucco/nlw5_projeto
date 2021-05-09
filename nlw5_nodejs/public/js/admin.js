@@ -1,13 +1,24 @@
 const socket = io();
 let connectionsUsers = [];
 
-socket.on("admin_list_all_users", (connections) => {
-  connectionsUsers = connections;
-  document.getElementById("list_users").innerHTML = "";
+socket.on("admin_connect", (connections) => {
+  connectionsUsers  = connections;
+  const connectionUsersWhithoutAdmin = connections.filter(connection => connection.admin_id === null);
+  const connectionUserWithAdmin = connections.filter(connection => connection.admin_id !== null);
+
+  socket.emit("admin_list_all_users_without_admin", connectionUsersWhithoutAdmin);
+
+  connectionUserWithAdmin.forEach((connection) => call(connection.socket_id));
+})
+
+socket.on("admin_list_all_users_without_admin", (connections) => {
+  connectionsUsers  = connections;
 
   let template = document.getElementById("template").innerHTML;
 
-  connections.forEach((connection) => {
+  document.getElementById("list_users").innerHTML = '';
+
+  connections.filter(con => con.admin_id === null).forEach((connection) => {
     const rendered = Mustache.render(template, {
       email: connection.user.email,
       id: connection.socket_id,

@@ -6,9 +6,10 @@ import { IMessageCreate } from '../models/IMessageCreate';
 io.on("connect", async (socket) => {
   const connectionsService: ConnectionsService = new ConnectionsService();
   const messagesService: MessagesService = new MessagesService();
-  const allConnectionsWithoutAdmin = await connectionsService.findAllWithoutAdmin();
+  // const allConnectionsWithoutAdmin = await connectionsService.findAllWithoutAdmin();
+  const allConnections = await connectionsService.findAll()
 
-  io.emit("admin_list_all_users", allConnectionsWithoutAdmin);
+  io.emit("admin_connect", allConnections);
 
   socket.on("admin_list_messages_by_user", async (params, callback) => {
     const { user_id } = params;
@@ -43,7 +44,8 @@ io.on("connect", async (socket) => {
     const connection = await connectionsService.findByUserId(user_id);
     connectionsService.updateAdminID(user_id, socket.id);
 
-    const allConnectionsWithoutAdmin = await connectionsService.findAllWithoutAdmin();
-    io.emit("admin_list_all_users", allConnectionsWithoutAdmin);
+    // const allConnectionsWithoutAdmin = await connectionsService.findAllWithoutAdmin();
+    const allConnections = await connectionsService.findAll();
+    io.emit("admin_list_all_users_without_admin", allConnections);
   })
 });

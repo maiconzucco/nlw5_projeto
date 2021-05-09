@@ -53,8 +53,9 @@ io.on("connect", (socket) => {
 
     socket.emit("client_list_all_messages", allMessages);
 
-    const allUsers = await connectionsService.findAllWithoutAdmin();
-    io.emit("admin_list_all_users", allUsers);
+    // const allUsers = await connectionsService.findAllWithoutAdmin();
+    const allUsers = await connectionsService.findAll();
+    io.emit("admin_list_all_users_without_admin", allUsers);
   });
 
   socket.on("client_send_to_admin", async params => {
